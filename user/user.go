@@ -47,7 +47,7 @@ func GetUserInput() (string, string, string, string, uint, uint) {
 	fmt.Println("Enter tickets' number: ")
 	fmt.Scan(&userTickets)
 
-	fmt.Println("Enter tickets' sector: ")
+	fmt.Println("Enter preferable tickets' sector: ")
 	fmt.Scan(&sector)
 
 	return userName, userLastName, email, phone, userTickets, sector

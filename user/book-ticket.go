@@ -7,7 +7,7 @@ import (
 )
 
 func BookTicket(userTickets uint, userName string, userLastName string, email string, phone string, sector uint) {
-	e.AvailableTickets = e.AvailableTickets - userTickets
+	e.AvaliableTickets = e.AvaliableTickets - userTickets
 
 	//map for a user
 	var userData = User{
@@ -23,17 +23,17 @@ func BookTicket(userTickets uint, userName string, userLastName string, email st
 	fmt.Printf("List of ticket buyers: %v\n", ticketsBuyers)
 
 	switch sector {
-	case 1, 3, 5, 7, 9:
+	case 1:
 		fmt.Println("Right sector")
-	case 2, 4, 6, 8, 10:
+	case 2:
 		fmt.Println("Left sector")
-	case 11, 12, 13:
+	case 6, 7:
 		fmt.Println("Vip sector")
 
 	}
 
 	fmt.Printf("Thank you %s %s for booking %d tickets.\nYou will recieve confirmation email at adress: %s and SMS at phone: %s\n", userName, userLastName, userTickets, email, phone)
-	fmt.Printf("For %s concert %v tickets remaining\n", e.BandName, e.AvailableTickets)
+	fmt.Printf("For %s concert %v tickets remaining\n", e.BandName, e.AvaliableTickets)
 }
 
 func SendTicket(userTickets uint, sector uint, userName string, userLastName string, email string) {
