@@ -1,31 +1,31 @@
 package main
 
 import (
-	e "booking-app/env"
-	f "booking-app/functions"
-	u "booking-app/user"
+	"booking-app/env"
+	"booking-app/functions"
+	"booking-app/user"
 	"fmt"
 )
 
 func main() {
 
-	f.WelcomeUsers()
-	f.DateAndPlace()
+	functions.WelcomeUsers()
+	functions.DateAndPlace()
 
 	for {
-		userName, userLastName, email, phone, userTickets, sector := u.GetUserInput()
+		userName, userLastName, email, phone, userTickets, sector := user.GetUserInput()
 
-		isValidName, isValidEmail, isValidTicket, isValidSector := f.ValidateUserInput(userName, userLastName, email, userTickets, sector, e.AvailableTickets)
+		isValidName, isValidEmail, isValidTicket, isValidSector := functions.ValidateUserInput(userName, userLastName, email, userTickets, sector, e.AvailableTickets)
 
 		if isValidEmail && isValidName && isValidTicket && isValidSector {
 
-			u.BookTicket(userTickets, userName, userLastName, email, phone, sector)
+			user.BookTicket(userTickets, userName, userLastName, email, phone, sector)
 			fmt.Printf("The first names of people booking tickets: %v\n", u.UsersFirstNames())
 			// starts new goroutine
-			e.Wg.Add(1)
-			go u.SendTicket(userTickets, sector, userName, userLastName, email)
+			env.Wg.Add(1)
+			go user.SendTicket(userTickets, sector, userName, userLastName, email)
 
-			if e.AvailableTickets == 0 {
+			if env.AvailableTickets == 0 {
 				//program ending
 				fmt.Println("Concert is soled out")
 				break
@@ -45,5 +45,5 @@ func main() {
 		}
 
 	}
-	e.Wg.Wait()
+	env.Wg.Wait()
 }

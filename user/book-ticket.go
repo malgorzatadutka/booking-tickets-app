@@ -1,13 +1,13 @@
 package user
 
 import (
-	e "booking-app/env"
+	"booking-app/env"
 	"fmt"
 	"time"
 )
 
 func BookTicket(userTickets uint, userName string, userLastName string, email string, phone string, sector uint) {
-	e.AvaliableTickets = e.AvaliableTickets - userTickets
+	env.AvailableTickets = env.AvailableTickets - userTickets
 
 	//map for a user
 	var userData = User{
@@ -33,7 +33,7 @@ func BookTicket(userTickets uint, userName string, userLastName string, email st
 	}
 
 	fmt.Printf("Thank you %s %s for booking %d tickets.\nYou will recieve confirmation email at adress: %s and SMS at phone: %s\n", userName, userLastName, userTickets, email, phone)
-	fmt.Printf("For %s concert %v tickets remaining\n", e.BandName, e.AvaliableTickets)
+	fmt.Printf("For %s concert %v tickets remaining\n", env.BandName, env.AvailableTickets)
 }
 
 func SendTicket(userTickets uint, sector uint, userName string, userLastName string, email string) {
