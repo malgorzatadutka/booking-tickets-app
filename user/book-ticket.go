@@ -44,5 +44,5 @@ func SendTicket(userTickets uint, sector uint, userName string, userLastName str
 	fmt.Println("************")
 	fmt.Printf("Sending ticket %v to email: %v", ticket, email)
 	fmt.Println("************")
-	e.Wg.Done()
+	env.Wg.Done()
 }
